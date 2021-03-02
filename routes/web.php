@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\TopicsController;
 use App\Http\Controllers\UsersController;
@@ -50,5 +51,8 @@ Route::post('email/resend', [VerificationController::class, 'resend'])->name('ve
 // 用户相关
 Route::resource('users', UsersController::class);
 
-
+// 话题相关
 Route::resource('topics', TopicsController::class)->only(['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']);
+
+// 帖子分类
+Route::resource('categories', CategoriesController::class)->only(['show']);
