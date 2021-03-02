@@ -29,7 +29,11 @@
       {{-- 用户发布的内容 --}}
       <div class="card ">
         <div class="card-body">
-          暂无数据 ~_~
+          <h5><strong>个人简介</strong></h5>
+          <p>{{ $user->introduction }}</p>
+          <hr>
+          <h5><strong>注册于</strong></h5>
+          <p>{{ $user->created_at->diffForHumans() }}</p>
         </div>
       </div>
 
