@@ -35,7 +35,7 @@ class UsersController extends Controller
     {
         // 授权检测
         $this->authorize('update', $user);
-        
+
         $data = $request->all();
 
         if ($request->avatar) {
