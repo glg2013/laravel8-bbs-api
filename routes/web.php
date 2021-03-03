@@ -52,7 +52,10 @@ Route::post('email/resend', [VerificationController::class, 'resend'])->name('ve
 Route::resource('users', UsersController::class);
 
 // 话题相关
-Route::resource('topics', TopicsController::class)->only(['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']);
+Route::resource('topics', TopicsController::class)->only(['index', 'create', 'store', 'update', 'edit', 'destroy']);
+
+// 显示话题
+Route::get('topics/{topic}/{slug?}', [TopicsController::class, 'show'])->name('topics.show');
 
 // 话题上传图片
 Route::post('upload_image', [TopicsController::class, 'uploadImage'])->name('topics.upload_image');
