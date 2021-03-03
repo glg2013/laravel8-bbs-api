@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\RepliesController;
 use App\Http\Controllers\TopicsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -63,4 +64,5 @@ Route::post('upload_image', [TopicsController::class, 'uploadImage'])->name('top
 // 帖子分类
 Route::resource('categories', CategoriesController::class)->only(['show']);
 
-Route::resource('replies', 'RepliesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+// 回复
+Route::resource('replies', RepliesController::class)->only(['store', 'destroy']);
