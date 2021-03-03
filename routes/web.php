@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\RepliesController;
 use App\Http\Controllers\TopicsController;
@@ -66,3 +67,6 @@ Route::resource('categories', CategoriesController::class)->only(['show']);
 
 // 回复
 Route::resource('replies', RepliesController::class)->only(['store', 'destroy']);
+
+// 通知
+Route::resource('notifications', NotificationsController::class)->only(['index']);
