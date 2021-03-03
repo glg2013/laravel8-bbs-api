@@ -41,6 +41,7 @@
 
           <div class="topic-body mt-4 mb-4">
             {!! $topic->body !!}
+{{--            {{ $topic->body }}--}}
           </div>
 
           <div class="operate">
