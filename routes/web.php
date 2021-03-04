@@ -70,3 +70,6 @@ Route::resource('replies', RepliesController::class)->only(['store', 'destroy'])
 
 // 通知
 Route::resource('notifications', NotificationsController::class)->only(['index']);
+
+// 无权限访问后台提示
+Route::get('permission-denied', [PagesController::class, 'permissionDenied'])->name('permission-denied');
