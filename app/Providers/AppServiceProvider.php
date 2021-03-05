@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
@@ -34,5 +35,8 @@ class AppServiceProvider extends ServiceProvider
 
         // 使用 bootstrap 分页样式
         Paginator::useBootstrap();
+
+        // 去掉 json 外层的data
+        JsonResource::withoutWrapping();
     }
 }
