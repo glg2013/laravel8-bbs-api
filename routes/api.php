@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AuthorizationsController;
 use App\Http\Controllers\Api\CaptchasController;
 use App\Http\Controllers\Api\UsersController;
 use App\Http\Controllers\Api\VerificationCodesController;
@@ -39,6 +40,13 @@ Route::prefix('v1')
                 // 用户注册
                 Route::post('users', [UsersController::class, 'store'])
                     ->name('users.store');
+                // 用户注册
+                Route::post('users', 'UsersController@store')
+                    ->name('users.store');
+                // 第三方登录
+                Route::post('socials/{social_type}/authorizations', [AuthorizationsController::class, 'socialStore'])
+                    ->where('social_type', 'wechat|weibo')  // 第三方登陆 支持微信及微博
+                    ->name('socials.authorizations.store');
             });
 
         // 访问相关
