@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthorizationsController;
 use App\Http\Controllers\Api\CaptchasController;
 use App\Http\Controllers\Api\CategoriesController;
 use App\Http\Controllers\Api\ImagesController;
+use App\Http\Controllers\Api\TopicsController;
 use App\Http\Controllers\Api\UsersController;
 use App\Http\Controllers\Api\VerificationCodesController;
 use Illuminate\Http\Request;
@@ -43,7 +44,7 @@ Route::prefix('v1')
                 Route::post('users', [UsersController::class, 'store'])
                     ->name('users.store');
                 // 用户注册
-                Route::post('users', 'UsersController@store')
+                Route::post('users', [UsersController::class, 'store'])
                     ->name('users.store');
                 // 第三方登录
                 Route::post('socials/{social_type}/authorizations', [AuthorizationsController::class, 'socialStore'])
@@ -65,6 +66,11 @@ Route::prefix('v1')
             ->group(function () {
                 // 游客可以访问的接口
 
+                // 话题列表，详情
+                Route::get('topics', [TopicsController::class, 'index']);
+                Route::get('topics/{topic}/{slug?}', [TopicsController::class, 'show']);
+
+
                 // 某个用户的详情
                 Route::get('users/{user}', [UsersController::class, 'show'])
                     ->name('users.show');
@@ -83,6 +89,9 @@ Route::prefix('v1')
                     // 上传图片
                     Route::post('images', [ImagesController::class, 'store'])
                         ->name('images.store');
+                    Route::post('topics', [TopicsController::class, 'store']);
+                    Route::patch('topics/{topic}', [TopicsController::class, 'update']);
+                    Route::delete('topics/{topic}', [TopicsController::class, 'destroy']);
                 });
             });
 
