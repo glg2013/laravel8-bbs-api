@@ -70,7 +70,6 @@ Route::prefix('v1')
                 Route::get('topics', [TopicsController::class, 'index']);
                 Route::get('topics/{topic}/{slug?}', [TopicsController::class, 'show']);
 
-
                 // 某个用户的详情
                 Route::get('users/{user}', [UsersController::class, 'show'])
                     ->name('users.show');
